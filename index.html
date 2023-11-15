@@ -8,69 +8,74 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Generador ID unico</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-        const generator = () =>{
-    
-    //obtenemos las dos primeras lestras del nombre.
-    let twoLetterfirstName = $('#firstName').val().toUpperCase().substr(0, 2);
-    //obtenemos las dos primeras lestras del birth name.
-    let twoLetterBirthName = $('#birthName').val().toUpperCase().substr(0, 2);
-    //obtenemos lados de la fecha de nacimiento DD/MM
-    let dateBirth = $('#dateBirth').val().split('-');
-    //obtenemos las dos primeras lestras del place of birth.
-    let twoLetterPlaceBirth = $('#placeBirth').val().toUpperCase().substr(0, 2);
-    //obtenemos las dos primeras lestras del mother’s maiden name.
-    let twoLettermotherMaidenName = $('#motherMaidenName').val().toUpperCase().substr(0, 2);
-
-
-    alert(twoLetterfirstName
-        +""+twoLetterBirthName
-        +""+dateBirth[2]
-        +""+dateBirth[1]
-        +""+twoLetterPlaceBirth
-        +""+twoLettermotherMaidenName
-        );
-}
-    </script>
+    <script src="generator.js"></script>
 </head>
 
 <body>
     <div class="container" style="margin-top: 10px;">
+        <div class="row">
+            <div class="col">
+                <div class="card" style="margin-bottom: 10px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Generador unique segurity ID</h5>
 
-        <div class="card " style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Generador unique segurity ID</h5>
+                        <div class="row">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="birthName" class="form-label">Birth Name</label>
+                                    <input type="text" class="form-control" id="birthName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="dateBirth" class="form-label">Date of Birth</label>
+                                    <input type="date" class="form-control" id="dateBirth">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="placeBirth" class="form-label">Place of Birth</label>
+                                    <input type="text" class="form-control" id="placeBirth">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="motherMaidenName" class="form-label">mother’s maiden name</label>
+                                    <input type="text" class="form-control" id="motherMaidenName">
+                                </div>
+                                <button type="button" class="btn btn-primary" onclick="generator()">Generator</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                <div class="row">
-                    <form>
-                        <div class="mb-3">
-                            <label for="firstName" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="firstName">
+        
+            <div class="col ">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">ID Storage</h5>
+
+                        <div class="row">
+                            <table class="table table-striped" id="data">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Birth Name</th>
+                                        <th scope="col">Date of Birth</th>
+                                        <th scope="col">Place of Birth</th>
+                                        <th scope="col">mother’s maiden name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="mb-3">
-                            <label for="birthName" class="form-label">Birth Name</label>
-                            <input type="text" class="form-control" id="birthName">
-                        </div>
-                        <div class="mb-3">
-                            <label for="dateBirth" class="form-label">Date of Birth</label>
-                            <input type="date" class="form-control" id="dateBirth">
-                        </div>
-                        <div class="mb-3">
-                            <label for="placeBirth" class="form-label">Place of Birth</label>
-                            <input type="text" class="form-control" id="placeBirth">
-                        </div>
-                        <div class="mb-3">
-                            <label for="motherMaidenName" class="form-label">mother’s maiden name</label>
-                            <input type="text" class="form-control" id="motherMaidenName">
-                        </div>
-                        <button type="button" class="btn btn-primary" onclick="generator()" >Generator</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-
-
-
+    </div>
 
 </body>
 
