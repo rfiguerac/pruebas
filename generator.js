@@ -1,3 +1,5 @@
+
+
 const llenartabla = () => {
     datos = JSON.parse(localStorage.getItem('IDs'));
     //recorremos los datos guardados para ir agregandolos a la tabla
@@ -12,29 +14,102 @@ const llenartabla = () => {
 }
 
 $(document).ready(function () {
+    jQuery.validator.addMethod("specialChar", function(value, element) {
+        return this.optional(element) || /([a-zA-Z\s])$/.test(value);
+     }, "Este campo no admite numeros ni caracteres especiales.");
+
     //verificamos si hay datos para llenar la tabla
     if (localStorage.getItem('IDs')) {
 
         llenartabla();
     }
+    $("#form").submit(function(event) {
+        event.preventDefault();
+    });
+    $("#form").validate({
+        
+        rules: {
+            firstName:{
+                required:true,
+                minlength:3,
+                specialChar:true
+            },
+            birthName:{
+                required:true,
+                minlength:3,
+                specialChar:true
+            },
+            dateBirth:{
+                required:true,
+
+            },
+            placeBirth:{
+                required:true,
+                minlength:3,
+                specialChar:true
+            },
+            motherMaidenName:{
+                required:true,
+                minlength:3,
+                specialChar:true
+
+            }   
+        },
+        messages: {
+            firstName:{
+                required:'campo requerido',
+                minlength:'mino 3 letras',
+                
+
+            },birthName:{
+                required:'campo requerido',
+                minlength:'mino 3 letras',
+            },
+            dateBirth:{
+                required:'campo requerido',
+
+            },
+            placeBirth:{
+                required:'campo requerido',
+                minlength:'mino 3 letras',
+            },
+            motherMaidenName:{
+                required:'campo requerido',
+                minlength:'mino 3 letras',
+            } 
+        },
+        submitHandler: function() { generator(); }
+    });
+   
 });
 
 const storage = (firstName, BirthName, dateBirth, PlaceBirth, motherMaidenName, ID) => {
     //primero verificamos si ya se ha creado el almacenaje
     if (localStorage.getItem('IDs')) {
-        let IDs = [
-            ...JSON.parse(localStorage.getItem('IDs')),
-            {
-                ID,
-                firstName,
-                BirthName,
-                dateBirth,
-                PlaceBirth,
-                motherMaidenName
-            }
-        ];
-        localStorage.setItem('IDs', JSON.stringify(IDs));
-        alert('registrado con exito 2');
+
+        //verificamos que no exista el codigo unico.
+        let data =JSON.parse(localStorage.getItem('IDs'));
+            data.map( item =>{
+                if(item.ID === ID){
+                    return alert('codigo unico ya existe')
+                }else{
+                    let IDs = [
+                        ...JSON.parse(localStorage.getItem('IDs')),
+                        {
+                            ID,
+                            firstName,
+                            BirthName,
+                            dateBirth,
+                            PlaceBirth,
+                            motherMaidenName
+                        }
+                    ];
+                    localStorage.setItem('IDs', JSON.stringify(IDs));
+                    alert('registrado con exito');
+                }
+            });
+
+        
     }
     else {
         let IDs = [{

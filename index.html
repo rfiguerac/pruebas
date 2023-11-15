@@ -8,7 +8,8 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Generador ID unico</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="generator.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    
 </head>
 
 <body>
@@ -20,28 +21,28 @@
                         <h5 class="card-title">Generador unique segurity ID</h5>
 
                         <div class="row">
-                            <form>
+                            <form id="form" method="post">
                                 <div class="mb-3">
                                     <label for="firstName" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="firstName">
+                                    <input type="text" class="form-control" id="firstName" name="firstName">
                                 </div>
                                 <div class="mb-3">
                                     <label for="birthName" class="form-label">Birth Name</label>
-                                    <input type="text" class="form-control" id="birthName">
+                                    <input type="text" class="form-control" id="birthName" name="birthName">
                                 </div>
                                 <div class="mb-3">
                                     <label for="dateBirth" class="form-label">Date of Birth</label>
-                                    <input type="date" class="form-control" id="dateBirth">
+                                    <input type="date" class="form-control" id="dateBirth" name="dateBirth">
                                 </div>
                                 <div class="mb-3">
                                     <label for="placeBirth" class="form-label">Place of Birth</label>
-                                    <input type="text" class="form-control" id="placeBirth">
+                                    <input type="text" class="form-control" id="placeBirth" name="placeBirth">
                                 </div>
                                 <div class="mb-3">
                                     <label for="motherMaidenName" class="form-label">mother’s maiden name</label>
-                                    <input type="text" class="form-control" id="motherMaidenName">
+                                    <input type="text" class="form-control" id="motherMaidenName" name="motherMaidenName">
                                 </div>
-                                <button type="button" class="btn btn-primary" onclick="generator()">Generator</button>
+                                <button type="submit" class="btn btn-primary">Generator</button>
                             </form>
                         </div>
                     </div>
@@ -76,7 +77,7 @@
             </div>
         </div>
     </div>
-
+    <script src="generator.js"></script>
 </body>
 
 </html>
